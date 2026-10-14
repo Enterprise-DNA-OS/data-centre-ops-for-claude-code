@@ -1,11 +1,31 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "work-order",
+    "title": "DRAFT: change work order",
+    "for_each": "select id,reference from changes where status in ('draft','approved') order by reference",
+    "file": "reference",
+    "sections": [
+      {
+        "title": "Change and review",
+        "note": "A record of the agreed plan. This document does not authorise physical or electrical work.",
+        "sql": "select reference,asset,kind,due,status,requester,approver,target_cabinet,target_start,reason,rollback,licensed_worker_ref,coc_required from v_change_review where id=$1"
+      }
+    ]
+  },
+  {
+    "name": "asset-audit",
+    "title": "Asset audit record",
+    "for_each": "select id,name from assets where status<>'retired' order by name",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Recorded asset",
+        "sql": "select site,name,cabinet,unit_start,height,status,owner,serial,audited_on from v_inventory where id=$1"
+      },
+      {
+        "title": "Verification history",
+        "sql": "select checked_on,actor,evidence from audit_history where asset_id=$1 order by checked_on desc"
+      }
     ]
   }
 ]

@@ -1,13 +1,41 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Data Centre Operations for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Weekly data centre review",
+    "subtitle": "Declared records only. Check site conditions before work.",
     "sections": [
       {
+        "title": "Cabinet capacity",
+        "sql": "select site,cabinet,units,occupied_units,budget_w,allocated_w,incomplete_assets from v_capacity order by site,cabinet"
+      },
+      {
         "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "sql": "select site,name,issue from v_attention order by site,name"
+      },
+      {
+        "title": "Open changes",
+        "sql": "select reference,asset,kind,due,status from v_change_review where status in ('draft','approved') order by due"
+      }
+    ]
+  },
+  {
+    "name": "rack-register",
+    "title": "Rack and asset register",
+    "sections": [
+      {
+        "title": "Inventory",
+        "sql": "select site,name,cabinet,unit_start,height,power_w,status,owner from v_inventory order by site,cabinet,unit_start"
+      }
+    ]
+  },
+  {
+    "name": "controls",
+    "title": "Record checks",
+    "sections": [
+      {
+        "title": "Exceptions",
+        "note": "OPS checks are internal policy. NZ-ELEC checks flag missing references, not legal certification.",
+        "sql": "select site,name,issue,rule from v_compliance order by rule,site,name"
       }
     ]
   }

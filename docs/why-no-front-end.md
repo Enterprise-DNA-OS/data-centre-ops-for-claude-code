@@ -1,24 +1,11 @@
 # Why there is no front end
 
-Sunbird dcTrack is a database with a subscription. The tables underneath it are ordinary: a few entities, a few relationships, a handful of workflows you repeat every week. What you pay for is the layer on top that lets people who do not write SQL get at those tables. Screens, filters, dashboards, forms.
+This base is for a data centre operator reviewing racks, asset ownership, planned allocations, change requests and audit evidence. The records stay in a database the operator owns. The agent runs the recurring work and renders read-only reports.
 
-That layer used to be the whole product, because talking to a database was hard. It is not hard any more. Open this folder in Claude Code, describe what you want, and it writes the query, runs it, and explains the answer. Ask a question the dashboard never had a chart for and you still get an answer.
+The free version has no mobile scanning, offline field capture, drag-and-drop rack elevations, live sensor polling, device discovery, remote power control, service topology inference or redundant-feed simulation. It uses top-level rack units and declared watts. It does not model blades, half-width devices, zero-U placement or cooling. Keep the engineering and monitoring tools required to operate the facility.
 
-## What you gain
+An operator can use the records and review paperwork without a front end. Enterprise DNA scopes connections, a web front end, phone workflows and a different stack for a custom version when required. No capability is present merely because it can be built.
 
-- **Better answers.** A dashboard shows what the vendor decided to chart. Here you ask your own question, in your own words, and get it answered against your own data.
-- **No seats.** Everyone who needs to look can look. The bill does not grow with headcount.
-- **Your data in your Postgres.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
-- **A process that matches you.** When your way of working changes, you add a command. You do not wait for a feature request to clear.
+PGlite runs locally. PostgreSQL can host the same schema for trusted operators. Roles and network access must be configured for that deployment. This is not a public or multi-tenant application. The actor field records attribution but does not authenticate a reviewer. Database owners can edit history.
 
-## What you give up
-
-- **A visual board.** Stages are a table you ask about, not cards you drag.
-- **A phone app.** It runs where Claude Code runs.
-- **A vendor help desk.** This is open source. Enterprise DNA supports the installed version for businesses that want someone to call.
-
-## Who this fits
-
-Small teams who already use Claude Code, or who would rather learn to ask than learn another interface. If your team needs a screen to look at all day, keep Sunbird dcTrack. If you need the answers more than the screens, this is cheaper, faster and yours.
-
-Installed and run for you: https://enterprisedna.co/omni/instead-of/sunbird-dctrack
+Omni by Enterprise DNA installs and runs the agreed version for one setup fee, then a retainer.
