@@ -6,9 +6,25 @@
     "file": "reference",
     "sections": [
       {
-        "title": "Change and review",
-        "note": "A record of the agreed plan. This document does not authorise physical or electrical work.",
-        "sql": "select reference,asset,kind,due,status,requester,approver,target_cabinet,target_start,reason,rollback,licensed_worker_ref,coc_required from v_change_review where id=$1"
+        "title": "Request",
+        "note": "DRAFT. A record of the agreed plan, not authority to perform physical or electrical work.",
+        "sql": "select reference,asset,kind,due from v_change_review where id=$1"
+      },
+      {
+        "title": "Review",
+        "sql": "select status,requester,approver from v_change_review where id=$1"
+      },
+      {
+        "title": "Planned placement",
+        "sql": "select target_cabinet,target_start from v_change_review where id=$1"
+      },
+      {
+        "title": "Reason and rollback",
+        "sql": "select reason,rollback from v_change_review where id=$1"
+      },
+      {
+        "title": "Practitioner and completion evidence",
+        "sql": "select licensed_worker_ref,coc_required,coc_ref,evidence from v_change_review where id=$1"
       }
     ]
   },
@@ -19,8 +35,12 @@
     "file": "name",
     "sections": [
       {
-        "title": "Recorded asset",
-        "sql": "select site,name,cabinet,unit_start,height,status,owner,serial,audited_on from v_inventory where id=$1"
+        "title": "Identity",
+        "sql": "select site,name,owner,serial from v_inventory where id=$1"
+      },
+      {
+        "title": "Recorded placement",
+        "sql": "select cabinet,unit_start,height,status,audited_on from v_inventory where id=$1"
       },
       {
         "title": "Verification history",
