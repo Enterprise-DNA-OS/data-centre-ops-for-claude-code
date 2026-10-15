@@ -6,7 +6,7 @@ Know what is in each cabinet, what fits next and which change needs review. Asse
 |---|---|---|
 | Free, MIT. Install and explore the fictional demo. | Your cabinet rules, exports, reports, connections and approved workflows. | Installed and operated through Omni by Enterprise DNA. One setup fee, then a retainer. |
 
-[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=sunbird-dctrack) · [Instead of Sunbird dcTrack](https://enterprisedna.co/omni/instead-of/sunbird-dctrack)
+[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=sunbird-dctrack) · [Instead of Sunbird dcTrack](https://enterprisedna.co/omni/instead-of/sunbird-dctrack?utm_source=github&utm_medium=readme&utm_campaign=sunbird-dctrack)
 
 ## Quick start
 
